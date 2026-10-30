@@ -151,90 +151,78 @@
 
 ## ۴. اسپرینت ۲: فاز طراحی و پیاده‌سازی پایگاه داده (Sprint 2: Database Design & Implementation)
 
-این بخش منعکس‌کننده مراحل کامل انجام تکلیف دوم درس آزمایشگاه مهندسی نرم‌افزار در سیستم مدیریت پروژه جیرا است:
+این بخش منعکس‌کننده مراحل کامل انجام تکلیف دوم درس آزمایشگاه مهندسی نرم‌افزار در سیستم مدیریت پروژه جیرا (پروژه SCRUM) است:
 
 ### Task 4: مدل‌سازی مفهومی، منطقی و تدوین نمودار ERD
-* **Issue Key:** `FM-TASK-4`
-* **Summary:** `Conceptual & Logical Data Modeling and ERD Diagram Design`
+* **Issue Key در جیرا:** `SCRUM-20`
+* **Summary:** `Task 4: ERD Design & Relational Data Modeling`
 * **Description:** تحلیل کامل نیازمندی‌های داده‌ای، موجودیت‌ها (کاربران، مدیران، پروفایل‌ها، پروژه‌ها، پیشنهادها، مهارت‌ها و دسته‌بندی‌ها)، تعیین کاردینالیتی روابط و رسم نمودار استاندارد ERD.
 * **Component:** Database / Architecture
-* **Linked Stories:** `Story 1`, `Story 2`, `Story 4`, `Story 5`, `Story 6`
-* **Status:** `Done`
+* **Linked Stories:** `SCRUM-8`, `SCRUM-9`, `SCRUM-10`, `SCRUM-12`
+* **Status در جیرا:** `Done`
 * **Sub-tasks:**
-  - `FM-SUB-4.1`: استخراج موجودیت‌ها، ویژگی‌ها و کلیدهای اصلی و خارجی
-  - `FM-SUB-4.2`: مدل‌سازی رابطه ۱ به ۱ اختیاری مدیران سیستم (جدول `admins`)
-  - `FM-SUB-4.3`: مدل‌سازی روابط چندبه‌چند با جداول واسط (`user_skills`, `project_categories`, `project_skills`)
-  - `FM-SUB-4.4`: طراحی و تولید فایل تصویری نمودار ERD در `docs/erd.png` و سورس `docs/erd.puml`
+  - `SCRUM-21`: Analyze Entities, Attributes, and Primary/Foreign Keys
+  - `SCRUM-22`: Model M:N Junction Tables (user_skills, project_skills, project_categories)
+  - `SCRUM-23`: Generate High-Resolution ERD Diagram (docs/erd.png & docs/erd.puml)
 
 ### Task 5: پیاده‌سازی اسکریپت DDL و ساختار جداول پایگاه داده در PostgreSQL
-* **Issue Key:** `FM-TASK-5`
-* **Summary:** `PostgreSQL DDL Implementation, Tables, and Structural Constraints`
+* **Issue Key در جیرا:** `SCRUM-24`
+* **Summary:** `Task 5: PostgreSQL DDL Schema & Table Constraints Definition`
 * **Description:** نگارش اسکریپت `database/schema.sql` جهت ساخت تمیز جداول، انواع داده دقیق، محدودیت‌های کلید اصلی/خارجی، رفتار ON DELETE، محدودیت‌های CHECK و ایندکس‌ها.
 * **Component:** Database / Backend
-* **Linked Stories:** `Story 1`, `Story 2`, `Story 4`
-* **Status:** `Done`
+* **Linked Stories:** `SCRUM-8`, `SCRUM-10`, `SCRUM-12`
+* **Status در جیرا:** `Done`
 * **Sub-tasks:**
-  - `FM-SUB-5.1`: پیاده‌سازی جدول `users` با هش پسورد و اعتبارسنجی فرمت ایمیل و حذف منطقی (Soft Delete)
-  - `FM-SUB-5.2`: پیاده‌سازی جداول `user_profiles`، `portfolios` و `certificates`
-  - `FM-SUB-5.3`: پیاده‌سازی جداول پایه `categories` و `skills` و جداول واسط
-  - `FM-SUB-5.4`: پیاده‌سازی جدول `projects` با محدودیت بودجه مثبت و وضعیت‌های چرخه حیات
-  - `FM-SUB-5.5`: پیاده‌سازی جدول `proposals` با محدودیت یکتایی فریلنسر به ازای هر پروژه
+  - `SCRUM-25`: Create Users, Admins, and Profiles Tables
+  - `SCRUM-26`: Create Projects and Categories/Skills Tables
+  - `SCRUM-27`: Create Proposals Table with Unique Constraints
 
-### Task 6: اتوماسیون قواعد کسب‌وکار و یکپارچگی داده با Triggerها و توابع PL/pgSQL
-* **Issue Key:** `FM-TASK-6`
-* **Summary:** `Business Logic Automation using PostgreSQL Functions and Triggers`
-* **Description:** پیاده‌سازی قواعد کسب‌وکار پیچیده و حیاتی پلتفرم که صرفاً با CHECKهای معمولی قابل اعمال نیستند.
+### Task 6: اتوماسیون قواعد کسب‌وکار و یکپارچگی داده با Triggerها
+* **Issue Key در جیرا:** `SCRUM-28`
+* **Summary:** `Task 6: Database Business Rules Enforcement & Trigger Automation`
+* **Description:** پیاده‌سازی قواعد کسب‌وکار پلتفرم (یکتایی پیشنهاد پذیرفته‌شده با ایندکس شرطی، تریگر بررسی وضعیت OPEN و منع پیشنهاد کارفرما روی پروژه خود، و تریگر تغییر وضعیت پروژه).
 * **Component:** Database / Business Logic
-* **Linked Stories:** `Story 5`, `Story 6`
-* **Status:** `Done`
+* **Linked Stories:** `SCRUM-12`, `SCRUM-13`
+* **Status در جیرا:** `Done`
 * **Sub-tasks:**
-  - `FM-SUB-6.1`: ایجاد ایندکس یکتایی شرطی (Partial Unique Index) جهت تضمین حداکثر یک پیشنهاد پذیرفته شده (`status = 'ACCEPTED'`)
-  - `FM-SUB-6.2`: پیاده‌سازی تریگر `trg_check_project_admin` جهت منع ثبت پروژه توسط حساب‌های مدیر (قاعده ۱۰)
-  - `FM-SUB-6.3`: پیاده‌سازی تریگر `trg_check_proposal_rules` جهت منع ارسال پیشنهاد توسط ادمین، پیشنهاد کارفرما روی پروژه خود، و محدودیت ثبت روی پروژه‌های OPEN
-  - `FM-SUB-6.4`: پیاده‌سازی تریگر `trg_proposal_accepted` جهت تغییر خودکار وضعیت پروژه به `IN_PROGRESS` پس از پذیرش پیشنهاد
-  - `FM-SUB-6.5`: پیاده‌سازی تریگرهای عمومی به‌روزرسانی فیلد `updated_at`
+  - `SCRUM-29`: Enforce Single Accepted Proposal via Partial Unique Index
+  - `SCRUM-30`: Implement Proposal Validation Trigger (Open status & Self-bid check)
+  - `SCRUM-31`: Implement Project Status Update Trigger on Proposal Acceptance
 
 ### Task 7: تولید داده‌های اولیه غنی و آزمایشی (Seed Data)
-* **Issue Key:** `FM-TASK-7`
-* **Summary:** `Comprehensive Seed Data Generation for Development & Testing`
-* **Description:** تدوین فایل `database/seed.sql` منطبق با شرایط سناریوی عملیاتی پلتفرم جهت تست و مشاهده نتایج واقعی.
+* **Issue Key در جیرا:** `SCRUM-32`
+* **Summary:** `Task 7: Seed Data Generation for Development & Simulation`
+* **Description:** تدوین فایل `database/seed.sql` منطبق با شرایط سناریوی عملیاتی پلتفرم شامل ۴ کاربر، دسته‌بندی‌ها، مهارت‌ها، پروژه‌ها و پیشنهادها.
 * **Component:** Database / QA
-* **Linked Stories:** `Story 1`, `Story 4`, `Story 5`, `Story 6`
-* **Status:** `Done`
+* **Linked Stories:** `SCRUM-8`, `SCRUM-10`, `SCRUM-12`
+* **Status در جیرا:** `Done`
 * **Sub-tasks:**
-  - `FM-SUB-7.1`: ثبت ۱ حساب مدیر سیستم، ۲ کارفرما، ۲ فریلنسر و حداقل ۱ کاربر با نقش دوطرفه (کارفرما/فریلنسر)
-  - `FM-SUB-7.2`: ایجاد پروفایل‌ها، نمونه‌کارها و مدارک بین‌المللی مرتبط
-  - `FM-SUB-7.3`: تعریف حداقل ۴ دسته‌بندی و ۷ مهارت تخصصی و انتساب آنها
-  - `FM-SUB-7.4`: درج ۴ پروژه در وضعیت‌های مختلف (`OPEN`, `IN_PROGRESS`, `DRAFT`, `COMPLETED`)
-  - `FM-SUB-7.5`: ثبت ۴ پیشنهاد معتبر و شبیه‌سازی فرآیند پذیرش پیشنهاد (تغییر وضعیت به ACCEPTED)
+  - `SCRUM-33`: Insert Users, Admin, Profiles, Portfolios, and Certificates
+  - `SCRUM-34`: Insert Categories, Skills, and Projects in Various Statuses
+  - `SCRUM-35`: Insert Proposals and Simulate Proposal Acceptance
 
 ### Task 8: پیاده‌سازی کوئری‌های تحلیلی و عملیاتی پایگاه داده
-* **Issue Key:** `FM-TASK-8`
-* **Summary:** `Development of Key Operational and Analytical SQL Queries`
-* **Description:** نگارش و بهینه‌سازی کوئری‌های SQL کاربردی در فایل `database/queries.sql` برای استفاده در APIها و داشبوردها.
+* **Issue Key در جیرا:** `SCRUM-36`
+* **Summary:** `Task 8: Core Operational and Reporting SQL Queries Development`
+* **Description:** نگارش و بهینه‌سازی ۴ کوئری اصلی خواسته شده در صورت تمرین در فایل `database/queries.sql`.
 * **Component:** Database / Query Optimization
-* **Linked Stories:** `Story 3`, `Story 5`, `Story 6`
-* **Status:** `Done`
+* **Linked Stories:** `SCRUM-10`, `SCRUM-11`, `SCRUM-12`, `SCRUM-13`
+* **Status در جیرا:** `Done`
 * **Sub-tasks:**
-  - `FM-SUB-8.1`: کوئری استخراج پروژه‌های باز به همراه اطلاعات کارفرما و دسته‌بندی
-  - `FM-SUB-8.2`: کوئری واکشی پیشنهادهای یک پروژه مشخص با مشخصات فریلنسر
-  - `FM-SUB-8.3`: کوئری گزارش آماری پروژه‌های هر کارفرما و تعداد پیشنهادهای دریافتی (GROUP BY / Aggregations)
-  - `FM-SUB-8.4`: کوئری مهارت‌های مورد نیاز پروژه به صورت تجمیعی (STRING_AGG)
-  - `FM-SUB-8.5`: کوئری‌های تکمیلی جستجوی پروژه‌ها بر اساس مهارت و گزارش جامع ۳۶۰ درجه فریلنسرها
+  - `SCRUM-37`: Implement Open Projects Query with Employer and Category
+  - `SCRUM-38`: Implement Project Proposals Query with Freelancer Details
+  - `SCRUM-39`: Implement Employer Projects & Proposals Aggregation Query
+  - `SCRUM-40`: Implement Required Skills per Project Query
 
 ### Task 9: طراحی اسکریپت آزمون اعتبارسنجی محدودیت‌ها (Constraints Test Suite)
-* **Issue Key:** `FM-TASK-9`
-* **Summary:** `Automated Database Constraints and Business Rules Verification Script`
-* **Description:** تدوین اسکریپت `database/tests.sql` شامل سناریوهای آزمون منفی و مثبت با استفاده از بلوک‌های تراکنشی امن `DO $$` جهت احراز صحت تمامی محدودیت‌ها.
+* **Issue Key در جیرا:** `SCRUM-41`
+* **Summary:** `Task 9: Automated Database Constraints and Rules Verification Script`
+* **Description:** تدوین سناریوهای آزمون اعتبارسنجی محدودیت‌ها (رد مقادیر منفی، ایمیل تکراری، پیشنهاد دوم، و ...) در فایل `database/tests.sql`.
 * **Component:** Database / QA & Verification
-* **Linked Stories:** All Epics / Security & Rules
-* **Status:** `Done`
+* **Linked Stories:** `SCRUM-8`, `SCRUM-10`, `SCRUM-12`, `SCRUM-13`
+* **Status در جیرا:** `Done`
 * **Sub-tasks:**
-  - `FM-SUB-9.1`: آزمون رد ایمیل تکراری و کلید خارجی نامعتبر
-  - `FM-SUB-9.2`: آزمون رد مقادیر منفی یا صفر برای بودجه و مبالغ پیشنهادی
-  - `FM-SUB-9.3`: آزمون رد پیشنهاد تکراری از یک فریلنسر برای یک پروژه
-  - `FM-SUB-9.4`: آزمون منع ثبت پیشنهاد توسط کارفرما روی پروژه خودش
-  - `FM-SUB-9.5`: آزمون منع فعالیت حساب‌های مدیر در ثبت پروژه و پیشنهاد
-  - `FM-SUB-9.6`: آزمون منع ثبت پیشنهاد روی پروژه‌های غیر OPEN
-  - `FM-SUB-9.7`: آزمون تضمین حداکثر یک پیشنهاد پذیرفته شده و تغییر خودکار وضعیت پروژه به IN_PROGRESS
+  - `SCRUM-42`: Formulate Negative Constraint Test Cases (Email, Budget, Foreign Key)
+  - `SCRUM-43`: Formulate Business Rule Test Cases (Self-bid, Duplicate Proposal)
+  - `SCRUM-44`: Formulate Positive Test Case for Project Status Lifecycle
 
