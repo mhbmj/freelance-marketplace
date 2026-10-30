@@ -146,3 +146,83 @@
    * **Description:** تنظیم ریپازیتوری `freelance-marketplace`، مستندسازی نیازمندی‌های عملکردی و غیرعملکردی در `docs/requirements.md` و ادغام Pull Request.
    * **Component:** DevOps / Documentation
    * **Status پیشنهادی روی برد:** `Done`
+
+---
+
+## ۴. اسپرینت ۲: فاز طراحی و پیاده‌سازی پایگاه داده (Sprint 2: Database Design & Implementation)
+
+این بخش منعکس‌کننده مراحل کامل انجام تکلیف دوم درس آزمایشگاه مهندسی نرم‌افزار در سیستم مدیریت پروژه جیرا (پروژه SCRUM) است:
+
+### Task 4: مدل‌سازی مفهومی، منطقی و تدوین نمودار ERD
+* **Issue Key در جیرا:** `SCRUM-20`
+* **Summary:** `Task 4: ERD Design & Relational Data Modeling`
+* **Description:** تحلیل کامل نیازمندی‌های داده‌ای، موجودیت‌ها (کاربران، مدیران، پروفایل‌ها، پروژه‌ها، پیشنهادها، مهارت‌ها و دسته‌بندی‌ها)، تعیین کاردینالیتی روابط و رسم نمودار استاندارد ERD.
+* **Component:** Database / Architecture
+* **Linked Stories:** `SCRUM-8`, `SCRUM-9`, `SCRUM-10`, `SCRUM-12`
+* **Status در جیرا:** `Done`
+* **Sub-tasks:**
+  - `SCRUM-21`: Analyze Entities, Attributes, and Primary/Foreign Keys
+  - `SCRUM-22`: Model M:N Junction Tables (user_skills, project_skills, project_categories)
+  - `SCRUM-23`: Generate High-Resolution ERD Diagram (docs/erd.png & docs/erd.puml)
+
+### Task 5: پیاده‌سازی اسکریپت DDL و ساختار جداول پایگاه داده در PostgreSQL
+* **Issue Key در جیرا:** `SCRUM-24`
+* **Summary:** `Task 5: PostgreSQL DDL Schema & Table Constraints Definition`
+* **Description:** نگارش اسکریپت `database/schema.sql` جهت ساخت تمیز جداول، انواع داده دقیق، محدودیت‌های کلید اصلی/خارجی، رفتار ON DELETE، محدودیت‌های CHECK و ایندکس‌ها.
+* **Component:** Database / Backend
+* **Linked Stories:** `SCRUM-8`, `SCRUM-10`, `SCRUM-12`
+* **Status در جیرا:** `Done`
+* **Sub-tasks:**
+  - `SCRUM-25`: Create Users, Admins, and Profiles Tables
+  - `SCRUM-26`: Create Projects and Categories/Skills Tables
+  - `SCRUM-27`: Create Proposals Table with Unique Constraints
+
+### Task 6: اتوماسیون قواعد کسب‌وکار و یکپارچگی داده با Triggerها
+* **Issue Key در جیرا:** `SCRUM-28`
+* **Summary:** `Task 6: Database Business Rules Enforcement & Trigger Automation`
+* **Description:** پیاده‌سازی قواعد کسب‌وکار پلتفرم (یکتایی پیشنهاد پذیرفته‌شده با ایندکس شرطی، تریگر بررسی وضعیت OPEN و منع پیشنهاد کارفرما روی پروژه خود، و تریگر تغییر وضعیت پروژه).
+* **Component:** Database / Business Logic
+* **Linked Stories:** `SCRUM-12`, `SCRUM-13`
+* **Status در جیرا:** `Done`
+* **Sub-tasks:**
+  - `SCRUM-29`: Enforce Single Accepted Proposal via Partial Unique Index
+  - `SCRUM-30`: Implement Proposal Validation Trigger (Open status & Self-bid check)
+  - `SCRUM-31`: Implement Project Status Update Trigger on Proposal Acceptance
+
+### Task 7: تولید داده‌های اولیه غنی و آزمایشی (Seed Data)
+* **Issue Key در جیرا:** `SCRUM-32`
+* **Summary:** `Task 7: Seed Data Generation for Development & Simulation`
+* **Description:** تدوین فایل `database/seed.sql` منطبق با شرایط سناریوی عملیاتی پلتفرم شامل ۴ کاربر، دسته‌بندی‌ها، مهارت‌ها، پروژه‌ها و پیشنهادها.
+* **Component:** Database / QA
+* **Linked Stories:** `SCRUM-8`, `SCRUM-10`, `SCRUM-12`
+* **Status در جیرا:** `Done`
+* **Sub-tasks:**
+  - `SCRUM-33`: Insert Users, Admin, Profiles, Portfolios, and Certificates
+  - `SCRUM-34`: Insert Categories, Skills, and Projects in Various Statuses
+  - `SCRUM-35`: Insert Proposals and Simulate Proposal Acceptance
+
+### Task 8: پیاده‌سازی کوئری‌های تحلیلی و عملیاتی پایگاه داده
+* **Issue Key در جیرا:** `SCRUM-36`
+* **Summary:** `Task 8: Core Operational and Reporting SQL Queries Development`
+* **Description:** نگارش و بهینه‌سازی ۴ کوئری اصلی خواسته شده در صورت تمرین در فایل `database/queries.sql`.
+* **Component:** Database / Query Optimization
+* **Linked Stories:** `SCRUM-10`, `SCRUM-11`, `SCRUM-12`, `SCRUM-13`
+* **Status در جیرا:** `Done`
+* **Sub-tasks:**
+  - `SCRUM-37`: Implement Open Projects Query with Employer and Category
+  - `SCRUM-38`: Implement Project Proposals Query with Freelancer Details
+  - `SCRUM-39`: Implement Employer Projects & Proposals Aggregation Query
+  - `SCRUM-40`: Implement Required Skills per Project Query
+
+### Task 9: طراحی اسکریپت آزمون اعتبارسنجی محدودیت‌ها (Constraints Test Suite)
+* **Issue Key در جیرا:** `SCRUM-41`
+* **Summary:** `Task 9: Automated Database Constraints and Rules Verification Script`
+* **Description:** تدوین سناریوهای آزمون اعتبارسنجی محدودیت‌ها (رد مقادیر منفی، ایمیل تکراری، پیشنهاد دوم، و ...) در فایل `database/tests.sql`.
+* **Component:** Database / QA & Verification
+* **Linked Stories:** `SCRUM-8`, `SCRUM-10`, `SCRUM-12`, `SCRUM-13`
+* **Status در جیرا:** `Done`
+* **Sub-tasks:**
+  - `SCRUM-42`: Formulate Negative Constraint Test Cases (Email, Budget, Foreign Key)
+  - `SCRUM-43`: Formulate Business Rule Test Cases (Self-bid, Duplicate Proposal)
+  - `SCRUM-44`: Formulate Positive Test Case for Project Status Lifecycle
+
