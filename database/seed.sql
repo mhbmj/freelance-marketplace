@@ -9,7 +9,8 @@ INSERT INTO users (first_name, last_name, email, phone_number, password_hash, st
 ('امید', 'شمس', 'admin@market.ir', '09121111111', 'hash_admin_123', 'ACTIVE'),
 ('سارا', 'احمدی', 'sara@gmail.com', '09122222222', 'hash_sara_123', 'ACTIVE'),
 ('علی', 'رضایی', 'ali@gmail.com', '09123333333', 'hash_ali_123', 'ACTIVE'),
-('مریم', 'حسینی', 'maryam@gmail.com', '09124444444', 'hash_maryam_123', 'ACTIVE');
+('مریم', 'حسینی', 'maryam@gmail.com', '09124444444', 'hash_maryam_123', 'ACTIVE'),
+('رضا', 'محمدی', 'reza@gmail.com', '09125555555', 'hash_reza_123', 'ACTIVE');
 
 -- 2. Admins
 INSERT INTO admins (user_id, role_title) VALUES
@@ -19,7 +20,8 @@ INSERT INTO admins (user_id, role_title) VALUES
 INSERT INTO user_profiles (user_id, professional_title, bio, location) VALUES
 (2, 'برنامه‌نویس فول‌استک', 'توسعه‌دهنده وب پایتون و ری‌اکت', 'تهران'),
 (3, 'متخصص بک‌اند', 'توسعه‌دهنده پایتون و پایگاه داده', 'اصفهان'),
-(4, 'مدیر محصول', 'کارفرما در پروژه‌های نرم‌افزاری', 'شیراز');
+(4, 'مدیر محصول', 'کارفرما در پروژه‌های نرم‌افزار', 'شیراز'),
+(5, 'برنامه‌نویس فرانت‌اند', 'توسعه‌دهنده React و وب', 'تبریز');
 
 -- 4. Portfolios
 INSERT INTO portfolios (user_id, title, description, project_url) VALUES
@@ -51,7 +53,8 @@ INSERT INTO user_skills (user_id, skill_id, years_of_experience) VALUES
 (2, 3, 3),
 (3, 1, 5),
 (3, 2, 4),
-(3, 4, 3);
+(3, 4, 3),
+(5, 3, 3);
 
 -- 9. Projects
 INSERT INTO projects (id, employer_id, title, description, pricing_type, budget, status) VALUES
@@ -75,9 +78,10 @@ INSERT INTO project_skills (project_id, skill_id, is_required) VALUES
 (2, 1, TRUE),
 (3, 3, TRUE);
 
--- 12. Proposals
+-- 12. Proposals (حداقل ۴ پیشنهاد معتبر)
 INSERT INTO proposals (project_id, freelancer_id, bid_amount, estimated_duration, cover_letter, status) VALUES
 (1, 3, 19000000, 20, 'تسلط کامل به جنگو و دیتابیس دارم و پروژه را سریع تحویل می‌دهم.', 'PENDING'),
+(1, 5, 19500000, 25, 'آماده پیاده‌سازی و همکاری با کیفیت بالا.', 'PENDING'),
 (2, 2, 380000, 50, 'سابقه تحلیل داده با پایتون دارم و آماده همکاری هستم.', 'PENDING'),
 (2, 3, 400000, 40, 'تسلط به پایتون دارم و پروژه را با کیفیت انجام می‌دهم.', 'PENDING');
 
